@@ -141,7 +141,7 @@ public class DBConn {
 
                 }
                 System.out.println(txt);
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\16696866\\Work\\ReebootSchoolJava\\Reports\\txt.csv"))) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Reports\\txt.csv"))) {
                     writer.write(txt);
 
                 }
