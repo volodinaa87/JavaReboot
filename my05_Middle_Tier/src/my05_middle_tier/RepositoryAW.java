@@ -6,6 +6,7 @@
 package my05_middle_tier;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,8 @@ import java.util.List;
  */
 public class RepositoryAW {
 
-   public List<ProductStatistics> getBestSoldProductsInDateRange(Date startDate, Date finalDate) throws SQLException {
+//   public List<ProductStatistics> getBestSoldProductsInDateRange(Date startDate, Date finalDate) throws SQLException {
+    public List<ProductStatistics> getBestSoldProductsInDateRange(Date startDate, Date finalDate) throws SQLException {
 
         List<ProductStatistics> results = new ArrayList<>();
         String dbLink = "jdbc:sqlserver://yand.dyndns.org\\AdventureWorks:1433;databaseName=AdventureWorks";
@@ -32,15 +34,18 @@ public class RepositoryAW {
 
             PreparedStatement prep = cn.prepareStatement(sqlQuery);
 
-            prep.setDate(1, java.sql.Date.valueOf(startDate.toString()));
-            prep.setDate(2, java.sql.Date.valueOf(finalDate.toString()));
+//            prep.setDate(1, java.sql.Date.valueOf(startDate.toString()));
+//            prep.setDate(2, java.sql.Date.valueOf(finalDate.toString()));
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            prep.setDate(1, java.sql.Date.valueOf(format.format(startDate)));
+            prep.setDate(2, java.sql.Date.valueOf(format.format(finalDate)));
 
             try (ResultSet rs = prep.executeQuery()) {
                 while (rs.next()) {
 //                    ProductStatistics ps = new ProductStatistics();
 //                    ps.setProductName(rs.getString("Name"));
 //                    ps.setSalesAmount(rs.getDouble("Amount"));
-            //сделать констуктор. через него проще и лучше
+                    //сделать констуктор. через него проще и лучше
                     ProductStatistics ps = new ProductStatistics(rs.getString("Name"), rs.getDouble("Amount"));
                     results.add(ps);
 

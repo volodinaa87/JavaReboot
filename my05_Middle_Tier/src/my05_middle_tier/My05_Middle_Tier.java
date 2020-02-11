@@ -5,6 +5,7 @@
  */
 package my05_middle_tier;
 
+import java.util.Date;
 import java.sql.*;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class My05_Middle_Tier {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
     public static void main1(String[] args) throws SQLException {
         String dbLink = "jdbc:sqlserver://yand.dyndns.org\\SB:1433;databaseName=SB";
