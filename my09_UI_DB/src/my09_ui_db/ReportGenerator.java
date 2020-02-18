@@ -76,7 +76,10 @@ public class ReportGenerator {
             }
             sheet.autoSizeColumn(0);
             sheet.autoSizeColumn(1);
-            book.write(new FileOutputStream(path));
+            try(FileOutputStream stream = new FileOutputStream(path)){
+            book.write(stream);
+            book.close();
+            }
         }
     }
 
