@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Calc</title>
+    </h:head>
+    <h:body>
+        <h1>Calculator JSF</h1>
+        <h:form>
+            <h:inputText value="#{calcBean.x}"/><br/>
+            <h:inputText value="#{calcBean.y}"/><br/>
+            <h:commandButton value="+" action="#{calcBean.plus}"/>
+            <h:commandButton value="-" action="#{calcBean.minus}"/><br/>
+            <h:inputText value="#{calcBean.z}"/>
+        </h:form>
+        <h2>DataTable</h2> <br/>
+        <h:dataTable value="#{dataBean.data}" var="d">
+            <h:column>
+                <h:outputText value="#{d}"/>
+            </h:column>
+        </h:dataTable>
+            
+        <h2>DataTable by repeat</h2> <br/>
+        <ui:repeat value="#{dataBean.data}" var="d">
+            #{d}<br/>
+        </ui:repeat>
+        
+    </h:body>
+</html>
+
