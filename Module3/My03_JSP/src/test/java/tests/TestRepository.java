@@ -8,6 +8,8 @@ package tests;
 import aw.data.DAO;
 import aw.data.DataBuilder;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,10 +17,14 @@ import java.sql.SQLException;
  */
 public class TestRepository {
     public static void main(String[] args) throws SQLException {
-        DAO db = new DAO();
-        DataBuilder dbo = new DataBuilder();
-        
-        System.out.println("Status connection: " + dbo.getFullPriceList().size());
+        try {
+            DAO db = new DAO();
+            DataBuilder dbo = new DataBuilder();
+            
+            System.out.println("Status connection: " + dbo.getFullPriceList().size());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(TestRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 }

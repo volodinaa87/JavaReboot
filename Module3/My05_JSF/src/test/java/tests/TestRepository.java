@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author alex
  */
 public class TestRepository {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         DAO db = new DAO();
         DataBuilder dbo = new DataBuilder();
         

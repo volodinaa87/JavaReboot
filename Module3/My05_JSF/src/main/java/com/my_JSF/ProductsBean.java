@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -27,7 +26,7 @@ public class ProductsBean{
     DataBuilder dbuilder;
 
     private List<Product> products;
-    public List<Product> getProducts() {
+    public List<Product> getProducts() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         try {
             return dbuilder.getFullPriceList();
         } catch (SQLException ex) {

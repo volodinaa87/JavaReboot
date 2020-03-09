@@ -22,11 +22,12 @@ import java.util.logging.Logger;
  */
 public class DataBuilder {
 
-    public List<Product> getFullPriceList() throws SQLException {
+    public List<Product> getFullPriceList() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         List<Product> results = new ArrayList<>();
         DAO daoCred = new DAO();
-
+        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+Class.forName(driver).newInstance();
         try (Connection conn = DriverManager.getConnection(daoCred.getDbURL(), daoCred.getUser(), daoCred.getPwd())) {
             String sqlQuery = "SELECT pps.Name as \"SubCategory\" "
                     + ",pp.Name as \"ProductName\" "
