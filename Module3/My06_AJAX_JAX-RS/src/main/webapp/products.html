@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function getProducts() {
+var url = "resources/api/products?filter=" + document.getElementById("txtFilter").value;
+var xhr = new XMLHttpRequest;    
+xhr.open("GET",url);
+xhr.onload = function (){
+//    alert(xhr.responseText);
+var products = JSON.parse(xhr.responseText);
+
+//alert(products);
+
+    document.getElementById("divProducts").innerHTML = "";
+for (var i = 0; i < products.length; i++) {
+    var p = products[i];
+    document.getElementById("divProducts").innerHTML += p.productName + " | " + p.price + "<br/>";
+}
+
+
+};
+xhr.send();
+}
+            
+        </script>
+    </head>
+    <body>
+        <h1>Products by AJAX</h1>
+        <input type="text" id="txtFilter" onkeyup="getProducts();"/>
+        <button onclick="getProducts();">Find</button>
+        <br/>
+        
+        <div id="divProducts">
+            
+        </div>
+        
+    </body>
+</html>
