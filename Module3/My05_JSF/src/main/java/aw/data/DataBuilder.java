@@ -17,17 +17,16 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author alex
- * generate data from db for pricelist generator
+ * @author alex generate data from db for pricelist generator
  */
 public class DataBuilder {
 
-    public List<Product> getFullPriceList() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public List<Product> getFullPriceList(String filter) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         List<Product> results = new ArrayList<>();
         DAO daoCred = new DAO();
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-Class.forName(driver).newInstance();
+        Class.forName(driver).newInstance();
         try (Connection conn = DriverManager.getConnection(daoCred.getDbURL(), daoCred.getUser(), daoCred.getPwd())) {
             String sqlQuery = "SELECT pps.Name as \"SubCategory\" "
                     + ",pp.Name as \"ProductName\" "
@@ -35,9 +34,11 @@ Class.forName(driver).newInstance();
                     + ",pp.ListPrice as \"Price\" "
                     + "from Production.product pp "
                     + "join Production.ProductSubcategory pps on pp.ProductSubcategoryID = pps.ProductSubcategoryID "
-                    + "and pp.ProductSubcategoryID is not null;";
+                    + "and pp.ProductSubcategoryID is not null "
+                    //                    + "where Name like '?%';";
+                    + "where pp.Name like ?;";
             PreparedStatement prep = conn.prepareStatement(sqlQuery);
-
+            prep.setString(1, filter+"%");
             try (ResultSet rs = prep.executeQuery()) {
                 while (rs.next()) {
                     Product ps = new Product(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4));

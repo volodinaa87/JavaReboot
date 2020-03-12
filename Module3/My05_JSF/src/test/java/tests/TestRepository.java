@@ -18,7 +18,9 @@ public class TestRepository {
         DAO db = new DAO();
         DataBuilder dbo = new DataBuilder();
         
-        System.out.println("Status connection: " + dbo.getFullPriceList().size());
+        System.out.println("Status connection: " + dbo.getFullPriceList("A").size());
+        System.out.println("Status connection: " + dbo.getFullPriceList("B").size());
+        System.out.println("Status connection: " + dbo.getFullPriceList("F").size());
 
     }
 }

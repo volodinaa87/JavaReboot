@@ -12,7 +12,10 @@
 <!--        <ui:repeat value="#{productsBean.products}" var="p">
             #{p.productName} #{p.price} <br/>
         </ui:repeat>-->
-        
+            <h:form>
+                <h:inputText value="#{productsBean.filter}"></h:inputText>
+                <h:commandButton value="Find"></h:commandButton>
+            </h:form>
         <h:dataTable value="#{productsBean.products}" var="prodTab" border="2"
                      cellspacing="1" cellpadding="1" bgcolor="grey">
             <h:column>

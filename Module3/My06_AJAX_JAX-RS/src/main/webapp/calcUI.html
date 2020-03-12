@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>CalcAJAX</title>
+        <style>
+            .pressed {
+                background-color: pink;
+            }
+        </style>
+        <script>
+            function plus(a,b){
+//                document.getElementById("hdr1").innerHTML = "CalcChanged";
+//                document.getElementById("hdr1").className = "pressed";
+        var x = document.getElementById("txtX").value;
+        var y = document.getElementById("txtY").value;
+//        var z = parseInt(x)+ parseInt(y);
+//        return z;
+var xhr = new XMLHttpRequest();
+xhr.open("GET","Plus?x="+x+"&y="+y, false);
+xhr.send();
+z = xhr.responseText;
+
+        document.getElementById("txtZ").value = z;
+        document.getElementById("btnPlus").className = "pressed";
+        document.getElementById("btnMinus").className = "";
+            }
+              function minus(){
+        var x = document.getElementById("txtX").value;
+        var y = document.getElementById("txtY").value;
+var xhr = new XMLHttpRequest();
+xhr.open("GET","Minus?x="+x+"&y="+y, false);
+xhr.send();
+z = xhr.responseText;
+
+        document.getElementById("txtZ").value = z;
+        document.getElementById("btnMinus").className = "pressed";
+        document.getElementById("btnPlus").className = "";
+            }          
+            
+        </script>  
+    </head>
+    <body>
+        <h1 id="hdr1">CalcAJAX</h1>
+
+            <input type="number" id="txtX" /><br/>
+            <input type="number" id="txtY" /><br/>
+            <input type="submit" id="btnPlus"  value="+" onclick="plus();">
+            <input type="submit" id="btnMinus" value="-" onclick="minus();"><br/>
+            <input type="text" id="txtZ"/><br/><br/>
+
+            <textarea cols="60" rows="10"></textarea>
+
+    </body>
+</html>

@@ -7,6 +7,7 @@ package com.my_JSF;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -15,7 +16,8 @@ import javax.inject.Named;
  * @author alex
  */
 @Named
-@SessionScoped
+//@SessionScoped
+@RequestScoped
 public class CalcBean implements Serializable{
 
     private static final Logger LOG = Logger.getLogger(CalcBean.class.getName());

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,6 +20,7 @@ import javax.inject.Named;
  * @author alex
  */
 @Named
+@RequestScoped
 public class ProductsBean{
 
 
@@ -26,9 +28,10 @@ public class ProductsBean{
     DataBuilder dbuilder;
 
     private List<Product> products;
+    private String filter = "";
     public List<Product> getProducts() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         try {
-            return dbuilder.getFullPriceList();
+            return dbuilder.getFullPriceList(filter);
         } catch (SQLException ex) {
             Logger.getLogger(ProductsBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,5 +40,13 @@ public class ProductsBean{
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 }
