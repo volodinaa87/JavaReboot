@@ -19,7 +19,7 @@ public class CalcService {
     @GET
     @Path("/plus")
     public int plus(@QueryParam("x") int x, @QueryParam("y") int y){
-        return 10*(x+y);
+        return (x+y);
     }
     @GET
     @Path("/minus")
