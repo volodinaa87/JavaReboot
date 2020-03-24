@@ -5,6 +5,8 @@
  */
 package my.web.api.client;
 
+import java.io.IOException;
+
 /**
  *
  * @author alex
@@ -41,8 +43,8 @@ public class DemoClient {
 //        System.out.println("Rows quantity: " + result.size());
 //
 //    }
-    public static void main(String[] args) {
-        ProxyCalc calc = new ProxyCalc();
+    public static void main(String[] args) throws IOException {
+        try(ProxyCalc calc = new ProxyCalc();){
         System.out.println("Plus: " + calc.plus(3, 4));
         System.out.println("Minus: " + calc.minus(3, 4));
         
@@ -50,4 +52,4 @@ public class DemoClient {
         System.out.println("Size by Proxy Class ProxyProducts: " + proxyProducts.getProducts("m").size());
     }
 
-}
+}}

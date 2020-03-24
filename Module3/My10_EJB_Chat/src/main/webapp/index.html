@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function getData(){
+                
+            var url = "resources/api/hello";
+            var xhr = new XMLHttpRequest;
+            xhr.open("GET",url);
+            xhr.onload = function (){
+                document.getElementById("divinfo").innerHTML = xhr.responseText;
+            }
+     xhr.send();       
+    }
+            
+            </script>
+    </head>
+    <body onload="getData();">
+        <h1>Demo Client</h1>
+        <div id="divinfo">Loading...</div>
+        
+    </body>
+</html>

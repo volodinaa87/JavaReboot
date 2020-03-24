@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            
+            function sendMessage(){
+                var url = "resources/chat/send?message=" +
+                        document.getElementById("message").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET",url);
+                xhr.onload = function() {
+                document.getElementById("message").value = "";
+                updateHistory();
+                setAutoUpdate();
+}
+xhr.send();
+
+                }
+            function updateHistory(){
+                var url = "resources/chat/get";
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET",url);
+                xhr.onload = function() {
+                document.getElementById("history").innerHTML = xhr.responseText;
+}
+xhr.send();
+                }
+                
+                function setAutoUpdate(){
+                    window.setInterval(updateHistory,1000);
+                }
+            
+        </script>
+    </head>
+    <body>
+        <h1>My chat using ejb and jax-rs</h1>
+        
+        <input type="text" id="message" value="TestMessage"/>
+        <button onclick="sendMessage();">Send</button>
+        <div id="history"></div>
+    </body>
+</html>

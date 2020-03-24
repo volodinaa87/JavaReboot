@@ -5,6 +5,7 @@
  */
 package my.web.api.client;
 
+import java.io.Closeable;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -16,8 +17,8 @@ import javax.ws.rs.core.MediaType;
  *
  * @author alex
  */
-public class ProxyProducts {
-
+public class ProxyProducts{
+        
     public List<Product> getProducts(String filter) {
 
         Client client = ClientBuilder.newClient();
