@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Web Calculator Service</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .pressed {
+                background-color: pink;
+            }
+        </style>
+        <!--js function with calc operations-->
+        <script src="js/actionsService.js"></script>
+    </head>
+    <body>
+        <h1>Web Calculator Service</h1>
+        <input type="number" id="txtX" /><br/>
+        <input type="number" id="txtY" /><br/>
+        <input type="submit" id="btnPlus"  value="+" onclick="plus();">
+        <input type="submit" id="btnMinus" value="-" onclick="minus();"><br/>
+        <input type="text" id="txtZ"/><br/><br/><br/>
+        <a href="index.html">Go back</a>
+    </body>
+</html>
