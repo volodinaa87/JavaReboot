@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>ReporterHR</title>
+    </h:head>
+    <h:body>
+        <h1>ReporterHR</h1><br/>
+        <h:form>
+            <h:outputText value="***Search form***"/><br/><br/>
+            <h:outputText value="Department name: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.depFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Employee LastName: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.lastnameFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Employee FirstName: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.firstnameFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Job Title: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.jobtitleFilter}"></h:inputText><br/><br/>
+<h:outputText value="Show all rows"/>
+<ace:checkboxButton type="checkbox" value="#{employeeDetailBean.ckbFilter}" disabled="disabled" /><br/><br/>
+            <h:commandButton value="Search"></h:commandButton><br/><br/>
+
+
+            <ace:dataTable value="#{employeeDetailBean.employees}" var="emp">
+                <ace:column headerText="Employee ID" 
+                            sortBy="#{emp.employeeId}"
+                            filterBy="#{emp.employeeId}"
+                            filterMatchMode="startsWith">#{emp.employeeId}</ace:column>
+                <ace:column headerText="Job ID"
+                            sortBy="#{emp.jobId}"
+                            filterBy="#{emp.jobId}"
+                            filterMatchMode="startsWith">#{emp.jobId}</ace:column>
+                <ace:column headerText="Manager ID"
+                            sortBy="#{emp.managerId}"
+                            filterBy="#{emp.managerId}"
+                            filterMatchMode="startsWith">#{emp.managerId}</ace:column>
+                <ace:column headerText="Department ID"
+                            sortBy="#{emp.departmentId}"
+                            filterBy="#{emp.departmentId}"
+                            filterMatchMode="startsWith">#{emp.departmentId}</ace:column>
+                <ace:column headerText="Department Name"
+                            sortBy="#{emp.departmentName}"
+                            filterBy="#{emp.departmentName}"
+                            filterMatchMode="startsWith">#{emp.departmentName}</ace:column>
+                <!--<ace:column headerText="Department Name">#{emp.departmentName}</ace:column>-->
+                <ace:column headerText="Job Title"
+                            sortBy="#{emp.jobTitle}"
+                            filterBy="#{emp.jobTitle}"
+                            filterMatchMode="startsWith">#{emp.jobTitle}</ace:column>
+                <ace:column headerText="First Name"
+                            sortBy="#{emp.firstName}"
+                            filterBy="#{emp.firstName}"
+                            filterMatchMode="startsWith">#{emp.firstName}</ace:column>
+                <ace:column headerText="Last Name"
+                            sortBy="#{emp.lastName}"
+                            filterBy="#{emp.lastName}"
+                            filterMatchMode="startsWith">#{emp.lastName}</ace:column>
+                <ace:column headerText="Salary"
+                            sortBy="#{emp.salary}"
+                            filterBy="#{emp.salary}"
+                            filterMatchMode="startsWith">#{emp.salary}</ace:column>
+                <ace:column headerText="Commission Percent"
+                            sortBy="#{emp.commissionPercent}"
+                            filterBy="#{emp.commissionPercent}"
+                            filterMatchMode="startsWith">#{emp.commissionPercent}</ace:column>
+                <ace:column headerText="City"
+                            sortBy="#{emp.city}"
+                            filterBy="#{emp.city}"
+                            filterMatchMode="startsWith">#{emp.city}</ace:column>
+                <ace:column headerText="State"
+                            sortBy="#{emp.state}"
+                            filterBy="#{emp.state}"
+                            filterMatchMode="startsWith">#{emp.state}</ace:column>
+                <ace:column headerText="Country"
+                            sortBy="#{emp.country}"
+                            filterBy="#{emp.country}"
+                            filterMatchMode="startsWith">#{emp.country}</ace:column>
+            </ace:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+<!--
+                            rs.getInt("employee_id"),
+                            rs.getInt("job_id"),
+                            rs.getInt("manager_id"),
+                            rs.getInt("department_id"),
+                            rs.getString("department_name"),
+                            rs.getString("job_title"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getInt("salary"),
+                            rs.getDouble("commission_pct"),
+                            rs.getString("city"),
+                            rs.getString("state_province"),
+                            rs.getString("country_name")-->
+
+<!--<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>PriceList AW by icefaces ACE Components</title>
+    </h:head>
+    <h:body>
+        <h1>PriceList AW by icefaces ACE Components</h1>
+        <h:form>
+            <ace:dataTable value="#{productsBean.products}" var="p">
+                <ace:column headerText="Product" 
+                            sortBy="#{p.productName}"
+                            filterBy="#{p.productName}"
+                            filterMatchMode="startsWith">#{p.productName}</ace:column>
+                <ace:column headerText="Price">#{p.price}</ace:column>
+                
+            </ace:dataTable>
+        </h:form>
+    </h:body>
+</html>-->

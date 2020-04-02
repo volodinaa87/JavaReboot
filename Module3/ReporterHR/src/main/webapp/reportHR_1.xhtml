@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>ReporterHR</title>
+    </h:head>
+    <h:body>
+        <h1>ReporterHR</h1><br/>
+        <h:form>
+            <h:outputText value="***Search form***"/><br/><br/>
+            <h:outputText value="Department name: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.depFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Employee LastName: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.lastnameFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Employee FirstName: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.firstnameFilter}"></h:inputText><br/><br/>
+            <h:outputText value="Job Title: "/>
+            <h:inputText title="% for all rows" value="#{employeeDetailBean.jobtitleFilter}"></h:inputText><br/><br/>
+<h:outputText value="Show all rows"/>
+<ace:checkboxButton type="checkbox" value="#{employeeDetailBean.ckbFilter}" disabled="disabled" /><br/><br/>
+            <h:commandButton value="Search"></h:commandButton><br/><br/>
+
+
+            <ace:dataTable value="#{employeeDetailBean.employees}" var="emp">
+                <ace:column headerText="Employee ID" 
+                            sortBy="#{emp.employeeId}"
+                            filterBy="#{emp.employeeId}"
+                            filterMatchMode="startsWith">#{emp.employeeId}</ace:column>
+
+
+                <!--<ace:column headerText="Employee ID">#{emp.employeeId}</ace:column>-->
+                <ace:column headerText="Job ID">#{emp.jobId}</ace:column>
+                <ace:column headerText="Manager ID">#{emp.managerId}</ace:column>
+                <ace:column headerText="Department ID">#{emp.departmentId}</ace:column>
+                <ace:column headerText="Department Name">#{emp.departmentName}</ace:column>
+                <!--<ace:column headerText="Department Name">#{emp.departmentName}</ace:column>-->
+                <ace:column headerText="Job Title">#{emp.jobTitle}</ace:column>
+                <ace:column headerText="First Name">#{emp.firstName}</ace:column>
+                <ace:column headerText="Last Name">#{emp.lastName}</ace:column>
+                <ace:column headerText="Salary">#{emp.salary}</ace:column>
+                <ace:column headerText="Commission Percent">#{emp.commissionPercent}</ace:column>
+                <ace:column headerText="City">#{emp.city}</ace:column>
+                <ace:column headerText="State">#{emp.state}</ace:column>
+                <ace:column headerText="Country">#{emp.country}</ace:column>
+            </ace:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+<!--
+                            rs.getInt("employee_id"),
+                            rs.getInt("job_id"),
+                            rs.getInt("manager_id"),
+                            rs.getInt("department_id"),
+                            rs.getString("department_name"),
+                            rs.getString("job_title"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getInt("salary"),
+                            rs.getDouble("commission_pct"),
+                            rs.getString("city"),
+                            rs.getString("state_province"),
+                            rs.getString("country_name")-->
+
+<!--<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>PriceList AW by icefaces ACE Components</title>
+    </h:head>
+    <h:body>
+        <h1>PriceList AW by icefaces ACE Components</h1>
+        <h:form>
+            <ace:dataTable value="#{productsBean.products}" var="p">
+                <ace:column headerText="Product" 
+                            sortBy="#{p.productName}"
+                            filterBy="#{p.productName}"
+                            filterMatchMode="startsWith">#{p.productName}</ace:column>
+                <ace:column headerText="Price">#{p.price}</ace:column>
+                
+            </ace:dataTable>
+        </h:form>
+    </h:body>
+</html>-->
